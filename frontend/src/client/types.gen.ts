@@ -1073,3 +1073,43 @@ export type privateCreateUserResponses = {
 };
 
 export type privateCreateUserResponse = privateCreateUserResponses[keyof privateCreateUserResponses];
+
+export type healthHealthLiveData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/health/live';
+};
+
+export type healthHealthLiveResponses = {
+    /**
+     * Response Health-Health Live
+     *
+     * Successful Response
+     */
+    200: {
+        [key: string]: string;
+    };
+};
+
+export type healthHealthLiveResponse = healthHealthLiveResponses[keyof healthHealthLiveResponses];
+
+export type healthHealthReadyData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/health/ready';
+};
+
+export type healthHealthReadyResponses = {
+    /**
+     * Response Health-Health Ready
+     *
+     * Successful Response
+     */
+    200: {
+        [key: string]: string;
+    };
+};
+
+export type healthHealthReadyResponse = healthHealthReadyResponses[keyof healthHealthReadyResponses];
