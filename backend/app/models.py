@@ -1,5 +1,7 @@
 import uuid
 from datetime import UTC, datetime
+from decimal import Decimal
+from enum import StrEnum
 
 from pydantic import EmailStr
 from sqlalchemy import DateTime
@@ -8,6 +10,12 @@ from sqlmodel import Field, Relationship, SQLModel
 
 def get_datetime_utc() -> datetime:
     return datetime.now(UTC)
+
+
+class PaymentStatus(StrEnum):
+    PAID = "PAID"
+    FAILED = "FAILED"
+    PENDING = "PENDING"
 
 
 # Shared properties
@@ -110,6 +118,31 @@ class ItemPublic(ItemBase):
 class ItemsPublic(SQLModel):
     data: list[ItemPublic]
     count: int
+
+
+class Payment(SQLModel, table=True):
+    payment_id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    order_id: str = Field(index=True, max_length=255)
+    owner_id: uuid.UUID = Field(
+        foreign_key="user.id",
+        nullable=False,
+        ondelete="CASCADE",
+        index=True,
+    )
+    transaction_id: uuid.UUID
+    created_by_correlation_id: uuid.UUID
+    amount: Decimal = Field(gt=0, max_digits=12, decimal_places=2)
+    currency: str = Field(default="CZK", max_length=3)
+    status: PaymentStatus
+    failure_reason: str | None = Field(default=None, max_length=255)
+    created_at: datetime | None = Field(
+        default_factory=get_datetime_utc,
+        sa_type=DateTime(timezone=True),  # type: ignore
+    )
+    updated_at: datetime | None = Field(
+        default_factory=get_datetime_utc,
+        sa_type=DateTime(timezone=True),  # type: ignore
+    )
 
 
 # Generic message
