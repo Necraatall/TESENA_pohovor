@@ -6,6 +6,7 @@ from fastapi.routing import APIRoute
 from starlette.middleware.cors import CORSMiddleware
 
 from app.api.main import api_router
+from app.api.routes import health
 from app.core.config import settings
 
 FRONTEND_DIR = Path(__file__).parent / "frontend"
@@ -33,4 +34,5 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+app.include_router(health.router)
 app.frontend("/", directory=FRONTEND_DIR)
