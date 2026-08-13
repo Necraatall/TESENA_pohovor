@@ -38,9 +38,7 @@ def test_readiness_reports_unavailable_database(
     client: TestClient,
 ) -> None:
     unavailable_session = MagicMock(spec=Session)
-    unavailable_session.execute.side_effect = SQLAlchemyError(
-        "Simulated database failure"
-    )
+    unavailable_session.exec.side_effect = SQLAlchemyError("Simulated database failure")
     app.dependency_overrides[get_db] = lambda: unavailable_session
 
     try:
