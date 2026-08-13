@@ -18,6 +18,12 @@ class PaymentStatus(StrEnum):
     PENDING = "PENDING"
 
 
+class PaymentScenario(StrEnum):
+    SUCCESS = "success"
+    DECLINED = "declined"
+    TIMEOUT = "timeout"
+
+
 # Shared properties
 class UserBase(SQLModel):
     email: EmailStr = Field(unique=True, index=True, max_length=255)
@@ -118,6 +124,25 @@ class ItemPublic(ItemBase):
 class ItemsPublic(SQLModel):
     data: list[ItemPublic]
     count: int
+
+
+class PaymentCreate(SQLModel):
+    amount: Decimal = Field(gt=0, max_digits=12, decimal_places=2)
+    scenario: PaymentScenario
+
+
+class PaymentPublic(SQLModel):
+    payment_id: uuid.UUID
+    order_id: str
+    owner_id: uuid.UUID
+    transaction_id: uuid.UUID
+    created_by_correlation_id: uuid.UUID
+    amount: Decimal
+    currency: str
+    status: PaymentStatus
+    failure_reason: str | None = None
+    created_at: datetime | None = None
+    updated_at: datetime | None = None
 
 
 class Payment(SQLModel, table=True):
