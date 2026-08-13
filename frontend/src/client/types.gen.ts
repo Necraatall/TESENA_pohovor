@@ -137,6 +137,74 @@ export type NewPassword = {
 };
 
 /**
+ * PaymentCreate
+ */
+export type PaymentCreate = {
+    /**
+     * Amount
+     */
+    amount: number | string;
+    scenario: PaymentScenario;
+};
+
+/**
+ * PaymentPublic
+ */
+export type PaymentPublic = {
+    /**
+     * Payment Id
+     */
+    payment_id: string;
+    /**
+     * Order Id
+     */
+    order_id: string;
+    /**
+     * Owner Id
+     */
+    owner_id: string;
+    /**
+     * Transaction Id
+     */
+    transaction_id: string;
+    /**
+     * Created By Correlation Id
+     */
+    created_by_correlation_id: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    status: PaymentStatus;
+    /**
+     * Failure Reason
+     */
+    failure_reason?: string | null;
+    /**
+     * Created At
+     */
+    created_at?: string | null;
+    /**
+     * Updated At
+     */
+    updated_at?: string | null;
+};
+
+/**
+ * PaymentScenario
+ */
+export type PaymentScenario = 'success' | 'declined' | 'timeout';
+
+/**
+ * PaymentStatus
+ */
+export type PaymentStatus = 'PAID' | 'FAILED' | 'PENDING';
+
+/**
  * PrivateUserCreate
  */
 export type PrivateUserCreate = {
@@ -920,6 +988,66 @@ export type itemsUpdateItemResponses = {
 };
 
 export type itemsUpdateItemResponse = itemsUpdateItemResponses[keyof itemsUpdateItemResponses];
+
+export type paymentsCreateOrderPaymentData = {
+    body: PaymentCreate;
+    path: {
+        /**
+         * Order Id
+         */
+        order_id: string;
+    };
+    query?: never;
+    url: '/api/v1/orders/{order_id}/payments';
+};
+
+export type paymentsCreateOrderPaymentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type paymentsCreateOrderPaymentError = paymentsCreateOrderPaymentErrors[keyof paymentsCreateOrderPaymentErrors];
+
+export type paymentsCreateOrderPaymentResponses = {
+    /**
+     * Successful Response
+     */
+    200: PaymentPublic;
+};
+
+export type paymentsCreateOrderPaymentResponse = paymentsCreateOrderPaymentResponses[keyof paymentsCreateOrderPaymentResponses];
+
+export type paymentsReadPaymentData = {
+    body?: never;
+    path: {
+        /**
+         * Payment Id
+         */
+        payment_id: string;
+    };
+    query?: never;
+    url: '/api/v1/payments/{payment_id}';
+};
+
+export type paymentsReadPaymentErrors = {
+    /**
+     * Validation Error
+     */
+    422: HTTPValidationError;
+};
+
+export type paymentsReadPaymentError = paymentsReadPaymentErrors[keyof paymentsReadPaymentErrors];
+
+export type paymentsReadPaymentResponses = {
+    /**
+     * Successful Response
+     */
+    200: PaymentPublic;
+};
+
+export type paymentsReadPaymentResponse = paymentsReadPaymentResponses[keyof paymentsReadPaymentResponses];
 
 export type privateCreateUserData = {
     body: PrivateUserCreate;
