@@ -55,9 +55,7 @@ def create_payment(
             created_by_correlation_id=correlation_id,
             amount=payment_in.amount,
             status=(
-                PaymentStatus.PAID
-                if gateway_result.approved
-                else PaymentStatus.FAILED
+                PaymentStatus.PAID if gateway_result.approved else PaymentStatus.FAILED
             ),
             failure_reason=gateway_result.failure_reason,
         )
