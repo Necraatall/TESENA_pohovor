@@ -6,6 +6,34 @@
 
 * 📝 Simplify project documentation. PR [#2442](https://github.com/fastapi/full-stack-fastapi-template/pull/2442) by [@tiangolo](https://github.com/tiangolo).
 
+### Features
+
+* 💳 Add PostgreSQL-backed `Payment` persistence using SQLModel and Alembic, including precise `Decimal` amounts, `CZK` currency, payment status, ownership, `transaction_id`, and `created_by_correlation_id` by Milan "Necraatall" Zlámal.
+* 📦 Add Payment request and response schemas and generated OpenAPI TypeScript client support for the new Payment API contract by Milan "Necraatall" Zlámal.
+* 🧪 Add deterministic fake payment gateway scenarios for successful, declined, and timeout payments, with timeout mapped to `PENDING` without artificial long waits by Milan "Necraatall" Zlámal.
+* 🔁 Add owner-scoped Payment business logic using `(owner_id, order_id)` with explicit retry precedence: `PAID` blocks, `PENDING` blocks, no previous payment allows the first attempt, and `FAILED`-only allows retry by Milan "Necraatall" Zlámal.
+* 🔐 Add authenticated and authorized Payment API endpoints for creating payment attempts and reading individual payments while enforcing Payment ownership by Milan "Necraatall" Zlámal.
+* 🖥️ Add React Payment Demo UI with editable order IDs, success / declined / timeout scenarios, retry after failed payments, and generated OpenAPI client integration by Milan "Necraatall" Zlámal.
+* ❤️ Add `/health/live` and `/health/ready` endpoints with PostgreSQL readiness verification and regenerate the frontend client for the health API contract by Milan "Necraatall" Zlámal.
+
+### Tests
+
+* ✅ Add backend integration tests covering successful, declined, and timeout Payment persistence and resulting payment states by Milan "Necraatall" Zlámal.
+* 🔁 Add backend coverage for Payment retry rules and `PAID` / `PENDING` / `FAILED` precedence by Milan "Necraatall" Zlámal.
+* 🔒 Add explicit Payment authorization and owner-isolation tests, including identical `order_id` values belonging to different users by Milan "Necraatall" Zlámal.
+* 📜 Add Payment API contract tests covering response structure, validation, authentication, authorization, and unknown payments by Milan "Necraatall" Zlámal.
+* ❤️ Add liveness and readiness tests, including PostgreSQL availability and unavailability scenarios by Milan "Necraatall" Zlámal.
+* 🎭 Add Playwright E2E tests covering successful and declined payments through React, FastAPI, and PostgreSQL by Milan "Necraatall" Zlámal.
+
+### Fixes
+
+* 🩹 Use SQLModel `Session.exec()` for the readiness database query to keep the implementation consistent with the SQLModel stack by Milan "Necraatall" Zlámal.
+
+### CI / DevSecOps
+
+* 👷 Add `TESENA Demo CI` with quality checks, backend pytest, hard coverage gate of at least 90%, frontend build, generated-client consistency verification, Playwright E2E reporting and artifacts, and Trivy container image scanning by Milan "Necraatall" Zlámal.
+* 🔐 Make the inherited FastAPI Cloud deployment workflow manual-only to prevent ordinary pushes to `master` from triggering an unintended external deployment by Milan "Necraatall" Zlámal.
+
 ## 0.12.0 (2026-08-12)
 
 ### Features
