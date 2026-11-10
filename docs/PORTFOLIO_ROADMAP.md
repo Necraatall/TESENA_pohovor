@@ -1,6 +1,6 @@
 # Secure Backend Platform — portfolio roadmap
 
-Status: **DRAFT / NOT VERIFIED**. Current repository name: `TESENA_pohovor`; proposed name: `secure-backend-platform`.
+Status: **DRAFT / NOT VERIFIED**. Project: **Secure Backend Platform**. Target repository slug: `secure-backend-platform`; rename from `TESENA_pohovor` pending.
 
 ## Scope and provenance
 - Separate features inherited from the upstream Full Stack FastAPI Template from demonstrably original work.
