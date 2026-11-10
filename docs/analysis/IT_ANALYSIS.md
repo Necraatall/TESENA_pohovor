@@ -1,6 +1,6 @@
 # IT analysis — Secure Backend Platform
 
-**Status: draft.** This document proposes acceptance criteria, not production features.
+**Status: draft.** Project: **Secure Backend Platform** (`secure-backend-platform`, repository rename pending from `TESENA_pohovor`). This document proposes acceptance criteria, not production features.
 
 ## Business objective
 Present a credible, reproducible Python backend project illustrating security-aware architecture, data consistency, API design, CI quality gates and performance engineering.

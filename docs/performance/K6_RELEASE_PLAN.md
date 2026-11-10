@@ -1,6 +1,6 @@
-# k6 performance verification plan
+# Secure Backend Platform — k6 performance verification plan
 
-Status: PLANNED, **NOT_RUN**.
+Project: **Secure Backend Platform** (`secure-backend-platform`, repository rename pending). Status: PLANNED, **NOT_RUN**.
 
 ## Controlled execution
 Run against local or dedicated staging environment with synthetic data only. Confirm permission and resource budgets before any load against shared endpoints.

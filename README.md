@@ -1,4 +1,18 @@
-# Full Stack FastAPI Template
+# Secure Backend Platform
+
+**Python / FastAPI · PostgreSQL · React · Docker · security-aware backend engineering**
+
+Project name: **Secure Backend Platform**. Target GitHub repository name: `secure-backend-platform` (administrative rename from `TESENA_pohovor` pending).
+
+This project builds on the [Full Stack FastAPI Template](https://github.com/fastapi/full-stack-fastapi-template). Template functionality must be credited to upstream authors. Independent improvements and test results are tracked separately and may not yet be complete.
+
+**Portfolio status: PRE-RELEASE / NOT VERIFIED.** See the [IT analysis](docs/analysis/IT_ANALYSIS.md), [architecture](docs/architecture/PORTFOLIO_ARCHITECTURE.md), [portfolio roadmap and release blockers](docs/PORTFOLIO_ROADMAP.md), and [k6 performance plan](docs/performance/K6_RELEASE_PLAN.md).
+
+Existing commands and feature descriptions below originate from the upstream-derived README. Actual functionality requires verification on the current commit.
+
+---
+
+## Upstream template baseline
 
 [![Test Docker Compose](../../actions/workflows/test-docker-compose.yml/badge.svg)](../../actions/workflows/test-docker-compose.yml)
 [![Test Backend](../../actions/workflows/test-backend.yml/badge.svg)](../../actions/workflows/test-backend.yml)
