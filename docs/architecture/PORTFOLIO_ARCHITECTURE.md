@@ -1,6 +1,6 @@
 # Architecture review: Secure Backend Platform
 
-**Design proposal, not verification of running deployment.** Source baseline: repository currently named TESENA_pohovor, derived from Full Stack FastAPI Template.
+**Design proposal, not verification of running deployment.** Project: **Secure Backend Platform** (`secure-backend-platform`, rename from `TESENA_pohovor` pending). Source baseline: Full Stack FastAPI Template; upstream attribution and runtime verification required.
 
 ## Context
 Users interact with a React/TypeScript UI. FastAPI exposes the backend API and authorization; PostgreSQL stores application data. Docker Compose orchestrates development services, Traefik can route public traffic, and GitHub Actions drives quality checks. Existing configuration and inherited starter components must be distinguished from independently implemented capabilities.
